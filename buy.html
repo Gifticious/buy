@@ -1,0 +1,50 @@
+<head>
+  <title>
+    Gifticious
+  </title>
+  <link rel="icon" type="icon/x-icon" href="icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style/buy.css">
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container">
+  <form method="POST" name="google-sheet">
+
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    <label for="phoneno">Phone No.</label>
+    <input type="text" id="phoneno" name="phoneno" placeholder="Phone No." required>
+    <label for="add">Address</label>
+    <input type="text" id="add" name="add" placeholder="Address" required>
+    <label for="hamper">Gift Hamper</label>
+    <select id="hamper" name="hamper" required>
+      <option value="">ㅤ</option>
+      <option value="special_hamper">Special Hamper Rs.699</option>
+      <option value="party_hamper">Party Hamper Rs.499</option>
+      <option value="sweet_hamper">Sweet Hmaper Rs.199</option>
+      <option value="sweet_hamper">Mini Hmaper Rs.99</option>
+    </select>  
+    <input type="submit" value="Buy" name="submit" onclick="setTimeout(myFunction, 5000)">
+    
+
+  </form>
+<script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyeMtUEiuqybNLPR41jonM5m9gC_BL1gmAIM6sF5H0Nes3UCQU7gPmZOkrXfBxXMLswVA/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Order placed"))
+                .catch(error => console.error('Error!', error.message))
+            })
+            function myFunction(){
+      window.location.href="index.html"
+    }
+          </script>
+
+
+</div>
